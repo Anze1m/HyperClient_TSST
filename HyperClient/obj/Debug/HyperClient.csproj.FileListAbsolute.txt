@@ -1,0 +1,12 @@
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\HyperClient.exe.config
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\HyperClient.exe
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\HyperClient.pdb
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.Form1.resources
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.Properties.Resources.resources
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.csproj.GenerateResource.Cache
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.csproj.CoreCompileInputs.cache
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.exe
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.pdb
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\ManagementDataObjects.dll
+c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.csprojResolveAssemblyReference.cache
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\MPLS.dll

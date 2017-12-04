@@ -1,0 +1,12 @@
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Release\HyperClient.exe.config
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Release\HyperClient.exe
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Release\HyperClient.pdb
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Release\ManagementDataObjects.dll
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Release\MPLS.dll
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\obj\Release\HyperClient.Form1.resources
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\obj\Release\HyperClient.Properties.Resources.resources
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\obj\Release\HyperClient.csproj.GenerateResource.Cache
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\obj\Release\HyperClient.csproj.CoreCompileInputs.cache
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\obj\Release\HyperClient.exe
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\obj\Release\HyperClient.pdb
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\obj\Release\HyperClient.csprojResolveAssemblyReference.cache
