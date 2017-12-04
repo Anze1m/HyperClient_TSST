@@ -17,6 +17,7 @@ namespace HyperClient
         bool sendingAllowance;
         public Sender(string destinationPort, byte gate)
         {
+
             this.gate = gate;
             int port;
             if (Int32.TryParse(destinationPort, out port))
