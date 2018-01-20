@@ -18,30 +18,40 @@ namespace HyperClient
             string callSign;
             string destinationPort;
             string listeningPort;
-            string agentPort;
+            int CPCCport;
+            int NCCport;
+            string name;
             byte gate;
             if (args.Length > 0)
             {
-                callSign = args[0];
-                destinationPort = args[1];
-                listeningPort = args[2];
-                gate = Byte.Parse(args[3]);
-                agentPort = args[4];
+                name = args[0];
+                callSign = args[1];
+                destinationPort = args[2];
+                listeningPort = args[3];
+                gate = Byte.Parse(args[4]);
+                CPCCport = Int32.Parse(args[5]);
+                NCCport = Int32.Parse(args[6]);
             }
             else
             {
-                callSign = "H.1";
+                name = "Abacki";
+                callSign = "H.2";
                 destinationPort = "7711";
                 listeningPort = "7712";
                 gate = Byte.Parse("1");
-                agentPort = "56001";
+                CPCCport = 56001;
+                NCCport = 56002;
             }
-            Dictionary< int, string> routingTable = new Dictionary<int, string>();
             Sender sender = new Sender(destinationPort, gate);
-            Form1 mainWindow = new Form1(sender, callSign);
+            CPCC cpcc = new CPCC(CPCCport, NCCport);
+
+            Form1 mainWindow = new Form1(sender, cpcc, name);
             mainWindow.allowSenderToLog();
-            Thread agentThread = new Thread(() => new Agent(routingTable, agentPort, callSign, mainWindow));
-            agentThread.Start();
+            mainWindow.allowCPCCToLog();
+
+            Thread cpccThread = new Thread(() => cpcc.listen());
+            cpccThread.Start();
+                       
             Receiver receiver = new Receiver(listeningPort, mainWindow);
             Application.EnableVisualStyles();
             Thread recThread = new Thread(() => receiver.receive());

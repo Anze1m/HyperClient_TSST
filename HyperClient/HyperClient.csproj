@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agent.cs" />
+    <Compile Include="CPCC.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

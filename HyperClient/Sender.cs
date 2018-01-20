@@ -42,13 +42,13 @@ namespace HyperClient
 
             }
         }
-        public void send(string message, string label, int numberOfPacket, int sendingInterval, bool randomization)
+        public void send(string message, int label, int numberOfPacket, int sendingInterval, bool randomization)
         {
             sendingAllowance = true;
 
             
             int[] labels = new int[1];
-            labels[0] = Int32.Parse(label);
+            labels[0] = label;
             
                 if (randomization)
                 {
