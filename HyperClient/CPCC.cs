@@ -88,7 +88,7 @@ namespace HyperClient
                         stringToLog = "Connection at label " + connectionReady.label + " failed";
                     }
                 }
-                else if (message.messageType.Equals("ConnectionReady"))
+                else if (message.messageType.Equals("CallNotification"))
                 {
                     CPCCcommunications.CallNotification callNotification = (CPCCcommunications.CallNotification)message;
                     if (callNotification.ready)
