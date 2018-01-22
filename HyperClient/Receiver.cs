@@ -46,6 +46,8 @@ namespace HyperClient
                 string currentTime = " <" + DateTime.Now.ToString("hh:mm:ss:fff") + ">\n";
                 for (int i = 0; i<numberOfPackets; i++)
                 {
+                    if (receivedAggregate.packets[i].labels.Last() == 0)
+                        continue;
                     string receivedString = receivedAggregate.packets[i].data;
                     mainWindow.Invoke(new Action(delegate () {
                         mainWindow.logReceivedPacket(receivedString, currentTime);

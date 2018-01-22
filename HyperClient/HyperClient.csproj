@@ -32,9 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Client.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Communications, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Communications.dll</HintPath>
+    </Reference>
+    <Reference Include="CPCCcommunications, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\CPCCcommunications.dll</HintPath>
+    </Reference>
+    <Reference Include="LRMIntercom">
+      <HintPath>..\..\..\..\Desktop\Nowy folder\Client\LRMIntercom.dll</HintPath>
+    </Reference>
     <Reference Include="ManagementDataObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ManagementDataObjects.dll</HintPath>

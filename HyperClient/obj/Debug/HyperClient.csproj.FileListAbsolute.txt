@@ -10,3 +10,6 @@ c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.
 c:\users\bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\ManagementDataObjects.dll
 c:\users\bartłomiej\source\repos\HyperClient\HyperClient\obj\Debug\HyperClient.csprojResolveAssemblyReference.cache
 C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\MPLS.dll
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\Communications.dll
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\CPCCcommunications.dll
+C:\Users\Bartłomiej\source\repos\HyperClient\HyperClient\bin\Debug\LRMIntercom.dll

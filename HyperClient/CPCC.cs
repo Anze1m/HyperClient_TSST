@@ -13,6 +13,7 @@ namespace HyperClient
         Form1 mainWindow;
         int CPCCport;
         int NCCport;
+        Socket send;
 
         public CPCC(int CPCCport, int NCCport)
         {
@@ -24,11 +25,15 @@ namespace HyperClient
             this.mainWindow = mainWindow;
         }
 
-        public void sendCallRequest()
+        public void sendCallRequest(string callSign, string receiverName, int label, int capacity)
         {
-            //stworzenie na podstawie przekazanych argumentów requesta i wysłąnie na NCCport
-            string stringToLog = "";
-            //stworzenie stringa do zalogowania w zależności od zawartości komunikatu
+            CPCCcommunications.CallRequest callRequest = new CPCCcommunications.CallRequest(callSign, receiverName, CPCCport, label, capacity, 0);
+
+            byte[] sendbuf = Communications.Serialization.Serialize(callRequest);
+            send = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            send.SendTo(sendbuf, new IPEndPoint(IPAddress.Parse("127.0.0.1"), NCCport));
+
+            string stringToLog = "CallRequest was sent (D:" + receiverName +" L:"+ label + " C:" + capacity + ")";
 
             string currentTime = " <" + DateTime.Now.ToString("hh:mm:ss:fff") + ">\n";
             mainWindow.Invoke(new Action(delegate () {
@@ -36,11 +41,15 @@ namespace HyperClient
             }));
         }
 
-        public void sendHangUpRequest()
+        public void sendHangUpRequest(string callSign, int label)
         {
-            //stworzenie na podstawie przekazanych argumentów requesta i wysłąnie na NCCport
-            string stringToLog = "";
-            //stworzenie stringa do zalogowania w zależności od zawartości komunikatu
+            CPCCcommunications.HangUpRequest hangUpRequest = new CPCCcommunications.HangUpRequest(callSign, CPCCport, label);
+
+            byte[] sendbuf = Communications.Serialization.Serialize(hangUpRequest);
+            send = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            send.SendTo(sendbuf, new IPEndPoint(IPAddress.Parse("127.0.0.1"), NCCport));
+
+            string stringToLog = "CallRequest was sent (L:" + label + ")";
 
             string currentTime = " <" + DateTime.Now.ToString("hh:mm:ss:fff") + ">\n";
             mainWindow.Invoke(new Action(delegate () {
@@ -60,12 +69,39 @@ namespace HyperClient
                 int readBytesNumber = orderingSocket.ReceiveFrom(buffer, ref manager);
                 byte[] receivedData = new byte[readBytesNumber];
                 Array.Copy(buffer, receivedData, readBytesNumber);
-
-                //deserializacja receivedData
                 string stringToLog = "";
-                //stworzenie stringa do zalogowania w zależności od zawartości komunikatu
+                Communications.Message message = Communications.Serialization.Deserialize(receivedData);
+                if(message.messageType.Equals("ConnectionDown"))
+                {
+                    CPCCcommunications.ConnectionDown connectionDown = (CPCCcommunications.ConnectionDown)message;
+                    stringToLog = "Connection at label " + connectionDown.label + " is down";
+                }
+                else if(message.messageType.Equals("ConnectionReady"))
+                {
+                    CPCCcommunications.ConnectionReady connectionReady = (CPCCcommunications.ConnectionReady)message;
+                    if(connectionReady.ready)
+                    {
+                        stringToLog = "Connection at label " + connectionReady.label + " established";
+                    }
+                    else
+                    {
+                        stringToLog = "Connection at label " + connectionReady.label + " failed";
+                    }
+                }
+                else if (message.messageType.Equals("ConnectionReady"))
+                {
+                    CPCCcommunications.CallNotification callNotification = (CPCCcommunications.CallNotification)message;
+                    if (callNotification.ready)
+                    {
+                        stringToLog = "Incoming call from " + callNotification.senderName;
+                    }
+                    else
+                    {
+                        stringToLog = "Connection with " + callNotification.senderName + " expired";
+                    }
+                }
 
-                string currentTime = " <" + DateTime.Now.ToString("hh:mm:ss:fff") + ">\n";
+                    string currentTime = " <" + DateTime.Now.ToString("hh:mm:ss:fff") + ">\n";
                 mainWindow.Invoke(new Action(delegate () {
                     mainWindow.logReceivedOrder(stringToLog, currentTime);
                 }));

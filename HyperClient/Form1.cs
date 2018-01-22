@@ -15,12 +15,14 @@ namespace HyperClient
     {
         Sender sendingComponent;
         CPCC cpcc;
-        public Form1(Sender sender, CPCC cpcc, string callSign)
+        string callSign;
+        public Form1(Sender sender, CPCC cpcc, string name, string callSign)
         {
             this.sendingComponent = sender;
             this.cpcc = cpcc;
             InitializeComponent();
-            this.Text = "Client " + callSign;
+            this.Text = "Client " + name;
+            this.callSign = callSign;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,16 +48,26 @@ namespace HyperClient
 
         private void makeCallRequest()
         {
-            //trzeba do tego przekazać argumenty pozwalające zbudować odpowiedniego requesta
-            cpcc.sendCallRequest();
+            string destinationName = textBox5.Text;
+            int capacity, label;
+            bool randomSize = checkBox1.Checked;
+            if (Int32.TryParse(textBox6.Text, out capacity) && Int32.TryParse(textBox7.Text, out label))
+            {
+                cpcc.sendCallRequest(callSign, destinationName, label, capacity);
+            }
+
         }
 
         private void makeHangUpRequest()
         {
-            //trzeba do tego przekazać argumenty pozwalające zbudować odpowiedniego requesta
-            cpcc.sendHangUpRequest();
+
+            int label;
+            if (Int32.TryParse(textBox7.Text, out label))
+            {
+                cpcc.sendHangUpRequest(callSign, label);
+
+            }
         }
-       
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -167,6 +179,21 @@ namespace HyperClient
         {
             Thread hangUpRequestThread = new Thread(() => makeHangUpRequest());
             hangUpRequestThread.Start();
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

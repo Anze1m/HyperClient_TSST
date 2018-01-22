@@ -45,7 +45,7 @@ namespace HyperClient
             Sender sender = new Sender(destinationPort, gate);
             CPCC cpcc = new CPCC(CPCCport, NCCport);
 
-            Form1 mainWindow = new Form1(sender, cpcc, name);
+            Form1 mainWindow = new Form1(sender, cpcc, name, callSign);
             mainWindow.allowSenderToLog();
             mainWindow.allowCPCCToLog();
 
